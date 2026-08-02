@@ -1,0 +1,1 @@
+package com.kgsat.notification.model; import java.math.BigDecimal; import java.time.Instant; public record PaymentEvent(String paymentId,String orderId,String customerId,BigDecimal amount,String status,Instant processedAt) {}

@@ -1,0 +1,1 @@
+package com.kgsat.payment.model; import java.math.BigDecimal; import java.time.Instant; public record OrderEvent(String orderId,String customerId,BigDecimal amount,boolean simulateFailure,Instant createdAt) {}

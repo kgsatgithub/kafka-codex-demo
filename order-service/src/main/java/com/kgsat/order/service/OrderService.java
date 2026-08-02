@@ -1,0 +1,3 @@
+package com.kgsat.order.service;
+import com.kgsat.order.model.*; import com.kgsat.order.producer.OrderProducer; import org.slf4j.*; import org.springframework.stereotype.Service; import java.time.Instant; import java.util.UUID;
+@Service public class OrderService { private static final Logger log=LoggerFactory.getLogger(OrderService.class); private final OrderProducer producer; public OrderService(OrderProducer producer){this.producer=producer;} public OrderEvent create(OrderRequest request){var event=new OrderEvent(UUID.randomUUID().toString(),request.customerId(),request.amount(),request.simulateFailure(),Instant.now());log.info("event=received_order orderId={} customerId={}",event.orderId(),event.customerId());producer.send(event);return event;} }
